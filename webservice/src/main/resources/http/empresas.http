@@ -1,0 +1,26 @@
+Listar todas
+GET http://localhost:8080/mackenzie/empresas
+
+Buscar por ID
+GET http://localhost:8080/mackenzie/empresas/1
+
+Criar
+POST http://localhost:8080/mackenzie/empresas
+Content-Type: application/json
+
+{
+  "cnpj": "55555555000100",
+  "email": "nova@empresa.com"
+}
+
+Atualizar
+PUT http://localhost:8080/mackenzie/empresas/1
+Content-Type: application/json
+
+{
+  "cnpj": "11111111000199",
+  "email": "atualizada@empresa.com"
+}
+
+Deletar
+DELETE http://localhost:8080/mackenzie/empresas/1

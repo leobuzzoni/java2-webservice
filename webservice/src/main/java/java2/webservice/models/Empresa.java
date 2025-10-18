@@ -1,0 +1,42 @@
+package java2.webservice.models;
+
+public class Empresa {
+
+    private long id;
+    private String cnpj;
+    private String email;
+
+    public Empresa() {
+    };
+
+    public Empresa(long id, String cnpj, String email) {
+        this.id = id;
+        this.cnpj = cnpj;
+        this.email = email;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+}
