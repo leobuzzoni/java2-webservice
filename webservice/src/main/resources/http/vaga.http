@@ -1,0 +1,33 @@
+### Listar
+GET http://localhost:8080/mackenzie/vagas
+
+### Buscar por ID
+GET http://localhost:8080/mackenzie/vagas/1
+
+### Criar
+POST http://localhost:8080/mackenzie/vagas
+Content-Type: application/json
+
+{
+  "titulo": "Analista de Dados",
+  "descricao": "Análise e visualização de dados",
+  "ativo": true,
+  "empresa": {
+    "id": 1,
+    "cnpj": "12345678000100",
+    "email": "empresa@teste.com"
+  }
+}
+
+### Atualizar
+PUT http://localhost:8080/mackenzie/vagas/1
+Content-Type: application/json
+
+{
+  "titulo": "Analista de Dados Sênior",
+  "descricao": "Experiência em Python e SQL",
+  "ativo": false
+}
+
+### Deletar
+DELETE http://localhost:8080/mackenzie/vagas/1
