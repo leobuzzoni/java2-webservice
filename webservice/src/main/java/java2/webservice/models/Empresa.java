@@ -3,14 +3,15 @@ package java2.webservice.models;
 public class Empresa {
 
     private long id;
+    private String nome;
     private String cnpj;
     private String email;
 
-    public Empresa() {
-    };
+    public Empresa() {};
 
-    public Empresa(long id, String cnpj, String email) {
+    public Empresa(long id, String nome, String cnpj, String email) {
         this.id = id;
+        this.nome = nome;
         this.cnpj = cnpj;
         this.email = email;
     }
@@ -21,6 +22,14 @@ public class Empresa {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getCnpj() {
@@ -38,5 +47,4 @@ public class Empresa {
     public void setEmail(String email) {
         this.email = email;
     }
-
 }

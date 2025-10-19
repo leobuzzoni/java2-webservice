@@ -1,0 +1,52 @@
+GET - Lista todas as vagas
+GET http://localhost:8080/mackenzie/vagas
+Accept: application/json
+
+###
+
+GET - Busca vaga por ID
+GET http://localhost:8080/mackenzie/vagas/1
+Accept: application/json
+
+###
+
+POST - Cria nova vaga
+POST http://localhost:8080/mackenzie/vagas
+Content-Type: application/json
+
+{
+  "titulo": "Estagiário de TI",
+  "descricao": "Auxílio na manutenção de sistemas e suporte técnico interno.",
+  "publicacao": "2025-10-18",
+  "ativo": true,
+  "empresa": {
+    "id": 1,
+    "nome": "Empresa Alfa LTDA",
+    "cnpj": "12.345.678/0001-90",
+    "email": "contato@empresa-alfa.com"
+  }
+}
+
+###
+
+PUT - Atualiza vaga existente
+PUT http://localhost:8080/mackenzie/vagas/2
+Content-Type: application/json
+
+{
+  "titulo": "Analista de Suporte Técnico Pleno",
+  "descricao": "Atendimento avançado a clientes e gestão de chamados.",
+  "publicacao": "2025-09-27",
+  "ativo": true,
+  "empresa": {
+    "id": 2,
+    "nome": "Beta Comércio ME",
+    "cnpj": "98.765.432/0001-10",
+    "email": "beta@comercio.com"
+  }
+}
+
+###
+
+DELETE - Remove vaga por ID
+DELETE http://localhost:8080/mackenzie/vagas/3
