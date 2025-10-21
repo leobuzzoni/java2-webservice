@@ -9,8 +9,7 @@ public class Vaga {
     private boolean ativo;
     private Empresa empresa;
 
-    public Vaga() {
-    };
+    public Vaga() {};
 
     public Vaga(long id, String titulo, String descricao, String publicacao, boolean ativo, Empresa empresa) {
         this.id = id;
@@ -61,8 +60,15 @@ public class Vaga {
         this.ativo = ativo;
     }
 
-    public long getIdEmpresa() {
-        return this.empresa.getId();
+    public Empresa getEmpresa() {
+        return empresa;
     }
 
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public long getIdEmpresa() {
+        return this.empresa != null ? this.empresa.getId() : 0;
+    }
 }

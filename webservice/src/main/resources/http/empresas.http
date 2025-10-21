@@ -1,26 +1,38 @@
-Listar todas
+GET - Lista todas as empresas
 GET http://localhost:8080/mackenzie/empresas
+Accept: application/json
 
-Buscar por ID
+###
+
+GET - Busca empresa por ID
 GET http://localhost:8080/mackenzie/empresas/1
+Accept: application/json
 
-Criar
+###
+
+POST - Cria nova empresa
 POST http://localhost:8080/mackenzie/empresas
 Content-Type: application/json
 
 {
-  "cnpj": "55555555000100",
-  "email": "nova@empresa.com"
+  "nome": "Nova Empresa Exemplo",
+  "cnpj": "44.555.666/0001-77",
+  "email": "contato@novaempresa.com"
 }
 
-Atualizar
-PUT http://localhost:8080/mackenzie/empresas/1
+###
+
+PUT - Atualiza empresa existente
+PUT http://localhost:8080/mackenzie/empresas/2
 Content-Type: application/json
 
 {
-  "cnpj": "11111111000199",
-  "email": "atualizada@empresa.com"
+  "nome": "Beta Comércio Atualizado",
+  "cnpj": "98.765.432/0001-10",
+  "email": "beta@comercioatualizado.com"
 }
 
-Deletar
-DELETE http://localhost:8080/mackenzie/empresas/1
+###
+
+DELETE - Remove empresa por ID
+DELETE http://localhost:8080/mackenzie/empresas/3
