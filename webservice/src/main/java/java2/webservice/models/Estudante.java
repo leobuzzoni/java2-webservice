@@ -1,7 +1,12 @@
 package java2.webservice.models;
 
-public class Estudante {
+import jakarta.persistence.*;
 
+@Entity
+public class Estudante {
+    
+    @Id
+    @GeneratedValue
     private long id;
     private String nome;
     private String email;

@@ -2,9 +2,10 @@ package java2.webservice.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java2.webservice.models.Estudante;
+import java2.webservice.repository.EstudanteRepo;
 
 @RestController
 public class EstudanteController {
@@ -24,50 +25,17 @@ public class EstudanteController {
         estudantes.add(new Estudante(10, "Felipe Cardoso", "felipe.cardoso@email.com", "2000-08-27", 2018));
     }
 
-    @GetMapping("/mackenzie/estudantes")
-    Iterable<Estudante> getEstudantes() {
-        return this.estudantes;
-    }
 
-    @GetMapping("/mackenzie/estudantes/{id}")
-    Optional<Estudante> getEstudante(@PathVariable long id) {
-        for (Estudante e : estudantes) {
-            if (e.getId() == id) {
-                return Optional.of(e);
-            }
-        }
-        return Optional.empty();
-    }
+        @Autowired
+        private EstudanteRepo estudanteRepo;
 
-    @PostMapping("/mackenzie/estudantes")
-    Estudante createEstudante(@RequestBody Estudante e) {
-        long maxId = 1;
-        for (Estudante est : estudantes) {
-            if (est.getId() > maxId) {
-                maxId = est.getId();
-            }
-        }
-        e.setId(maxId + 1);
-        estudantes.add(e);
-        return e;
-    }
-
-    @PutMapping("/mackenzie/estudantes/{id}")
-    Optional<Estudante> updateEstudante(@RequestBody Estudante estudanteRequest, @PathVariable long id) {
-        Optional<Estudante> opt = this.getEstudante(id);
-        if (opt.isPresent()) {
-            Estudante estudante = opt.get();
-            estudante.setNome(estudanteRequest.getNome());
-            estudante.setEmail(estudanteRequest.getEmail());
-            estudante.setNascimento(estudanteRequest.getNascimento());
-            estudante.setAnoIngresso(estudanteRequest.getAnoIngresso());
+        @PostMapping("/mackenzie/estudantes")
+        public Estudante criar(@RequestBody Estudante e) {
+                return estudanteRepo.save(e);
         }
 
-        return opt;
-    }
-
-    @DeleteMapping("/mackenzie/estudantes/{id}")
-    void deleteEstudante(@PathVariable long id) {
-        estudantes.removeIf(e -> e.getId() == id);
-    }
+        @GetMapping("/mackenzie/estudantes")
+        public Iterable<Estudante> consultar() {
+                return estudanteRepo.findAll();
+        }
 }
