@@ -2,14 +2,15 @@ package java2.webservice.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java2.webservice.models.Vaga;
-import java2.webservice.repository.VagaRepo;
 import java2.webservice.models.Empresa;
+import java2.webservice.repository.VagaRepo;
 
 @RestController
+@RequestMapping("/mackenzie/vagas")
 public class VagaController {
         private List<Vaga> vagas;
 
@@ -23,27 +24,22 @@ public class VagaController {
                 vagas = new ArrayList<>();
                 vagas.add(new Vaga(1, "Desenvolvedor Java",
                                 "Atuação em projetos backend com Java e Spring. Experiência desejada em APIs REST.",
-                                "2025-10-01", true,
-                                e1));
+                                "2025-10-01", true, e1));
                 vagas.add(new Vaga(2, "Analista de Suporte Técnico",
                                 "Suporte a clientes, resolução de chamados e participação em treinamentos internos.",
-                                "2025-09-27",
-                                true, e2));
+                                "2025-09-27", true, e2));
                 vagas.add(new Vaga(3, "Engenheiro de Software",
                                 "Desenvolvimento de soluções para sistemas corporativos, integração e automação.",
-                                "2025-10-03", false,
-                                e3));
+                                "2025-10-03", false, e3));
                 vagas.add(new Vaga(4, "Analista de Dados",
                                 "Manipulação e análise de grandes volumes de dados. Conhecimentos de SQL e Python.",
-                                "2025-09-18", true,
-                                e4));
+                                "2025-09-18", true, e4));
                 vagas.add(new Vaga(5, "Designer Digital",
                                 "Criação de materiais gráficos, UX/UI e participação em campanhas de marketing.",
-                                "2025-09-30", false,
-                                e5));
+                                "2025-09-30", false, e5));
                 vagas.add(new Vaga(6, "Consultor de Projetos",
-                                "Elaboração e acompanhamento de projetos empresariais e treinamentos.", "2025-10-06",
-                                true, e1));
+                                "Elaboração e acompanhamento de projetos empresariais e treinamentos.",
+                                "2025-10-06", true, e1));
                 vagas.add(new Vaga(7, "Programador Full Stack",
                                 "Desenvolvimento de aplicações web frontend e backend com foco em automação.",
                                 "2025-10-04", true, e2));
@@ -52,14 +48,45 @@ public class VagaController {
         @Autowired
         private VagaRepo vagaRepo;
 
-        @PostMapping("/mackenzie/vagas")
+        @PostMapping
         public Vaga criar(@RequestBody Vaga v) {
                 return vagaRepo.save(v);
         }
 
-        @GetMapping("/mackenzie/vagas")
+        @GetMapping
         public Iterable<Vaga> consultar() {
                 return vagaRepo.findAll();
         }
 
+        @GetMapping("/{id}")
+        public Optional<Vaga> consultarPorId(@PathVariable long id) {
+                return vagaRepo.findById(id);
+        }
+
+        @PutMapping("/{id}")
+        public Vaga atualizar(@PathVariable long id, @RequestBody Vaga v) {
+                Optional<Vaga> existente = vagaRepo.findById(id);
+                if (existente.isPresent()) {
+                        Vaga vagaAtual = existente.get();
+                        vagaAtual.setTitulo(v.getTitulo());
+                        vagaAtual.setDescricao(v.getDescricao());
+                        vagaAtual.setPublicacao(v.getPublicacao());
+                        vagaAtual.setAtivo(v.getAtivo());
+                        vagaAtual.setEmpresa(v.getEmpresa());
+                        return vagaRepo.save(vagaAtual);
+                } else {
+                        v.setId(id);
+                        return vagaRepo.save(v);
+                }
+        }
+
+        @DeleteMapping("/{id}")
+        public String deletar(@PathVariable long id) {
+                if (vagaRepo.existsById(id)) {
+                        vagaRepo.deleteById(id);
+                        return "Vaga com ID " + id + " removida com sucesso.";
+                } else {
+                        return "Vaga com ID " + id + " não encontrada.";
+                }
+        }
 }
