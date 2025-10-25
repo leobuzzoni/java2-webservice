@@ -8,7 +8,8 @@ public class Estudante {
     private String nascimento;
     private int anoIngresso;
 
-    public Estudante() {};
+    public Estudante() {
+    };
 
     public Estudante(long id, String nome, String email, String nascimento, int anoIngresso) {
         this.id = id;

@@ -1,15 +1,24 @@
 package java2.webservice.models;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Vaga {
 
+    @Id
+    @GeneratedValue
     private long id;
+
     private String titulo;
     private String descricao;
     private String publicacao;
     private boolean ativo;
+
+    @ManyToOne
     private Empresa empresa;
 
-    public Vaga() {};
+    public Vaga() {
+    }
 
     public Vaga(long id, String titulo, String descricao, String publicacao, boolean ativo, Empresa empresa) {
         this.id = id;

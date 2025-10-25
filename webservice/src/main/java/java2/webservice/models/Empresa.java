@@ -7,7 +7,8 @@ public class Empresa {
     private String cnpj;
     private String email;
 
-    public Empresa() {};
+    public Empresa() {
+    };
 
     public Empresa(long id, String nome, String cnpj, String email) {
         this.id = id;
