@@ -26,12 +26,22 @@ public class EmpresaController {
 
     @GetMapping("/mackenzie/empresas/{id}")
     Optional<Empresa> getEmpresa(@PathVariable long id) {
-        return empresas.stream().filter(e -> e.getId() == id).findFirst();
+        for (Empresa e : empresas) {
+            if (e.getId() == id) {
+                return Optional.of(e);
+            }
+        }
+        return Optional.empty();
     }
 
     @PostMapping("/mackenzie/empresas")
     Empresa createEmpresa(@RequestBody Empresa e) {
-        long maxId = empresas.stream().mapToLong(Empresa::getId).max().orElse(0);
+        long maxId = 1;
+        for (Empresa emp : empresas) {
+            if (emp.getId() > maxId) {
+                maxId = emp.getId();
+            }
+        }
         e.setId(maxId + 1);
         empresas.add(e);
         return e;
@@ -40,16 +50,18 @@ public class EmpresaController {
     @PutMapping("/mackenzie/empresas/{id}")
     Optional<Empresa> updateEmpresa(@RequestBody Empresa empresaRequest, @PathVariable long id) {
         Optional<Empresa> opt = this.getEmpresa(id);
-        opt.ifPresent(empresa -> {
+        if (opt.isPresent()) {
+            Empresa empresa = opt.get();
             empresa.setNome(empresaRequest.getNome());
             empresa.setCnpj(empresaRequest.getCnpj());
             empresa.setEmail(empresaRequest.getEmail());
-        });
+        }
+
         return opt;
     }
 
     @DeleteMapping("/mackenzie/empresas/{id}")
     void deleteEmpresa(@PathVariable long id) {
-        empresas.removeIf(p -> p.getId() == id);
+        empresas.removeIf(e -> e.getId() == id);
     }
 }

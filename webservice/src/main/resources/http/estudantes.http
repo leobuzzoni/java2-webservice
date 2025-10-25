@@ -1,16 +1,13 @@
-GET - Lista todas as vagas
 GET http://localhost:8080/mackenzie/vagas
 Accept: application/json
 
 ###
 
-GET - Busca vaga por ID
 GET http://localhost:8080/mackenzie/vagas/1
 Accept: application/json
 
 ###
 
-POST - Cria nova vaga
 POST http://localhost:8080/mackenzie/vagas
 Content-Type: application/json
 
@@ -29,7 +26,6 @@ Content-Type: application/json
 
 ###
 
-PUT - Atualiza vaga existente
 PUT http://localhost:8080/mackenzie/vagas/2
 Content-Type: application/json
 
@@ -48,5 +44,4 @@ Content-Type: application/json
 
 ###
 
-DELETE - Remove vaga por ID
 DELETE http://localhost:8080/mackenzie/vagas/3

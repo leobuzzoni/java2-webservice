@@ -31,12 +31,22 @@ public class EstudanteController {
 
     @GetMapping("/mackenzie/estudantes/{id}")
     Optional<Estudante> getEstudante(@PathVariable long id) {
-        return estudantes.stream().filter(e -> e.getId() == id).findFirst();
+        for (Estudante e : estudantes) {
+            if (e.getId() == id) {
+                return Optional.of(e);
+            }
+        }
+        return Optional.empty();
     }
 
     @PostMapping("/mackenzie/estudantes")
     Estudante createEstudante(@RequestBody Estudante e) {
-        long maxId = estudantes.stream().mapToLong(Estudante::getId).max().orElse(0);
+        long maxId = 1;
+        for (Estudante est : estudantes) {
+            if (est.getId() > maxId) {
+                maxId = est.getId();
+            }
+        }
         e.setId(maxId + 1);
         estudantes.add(e);
         return e;
@@ -45,17 +55,19 @@ public class EstudanteController {
     @PutMapping("/mackenzie/estudantes/{id}")
     Optional<Estudante> updateEstudante(@RequestBody Estudante estudanteRequest, @PathVariable long id) {
         Optional<Estudante> opt = this.getEstudante(id);
-        opt.ifPresent(estudante -> {
+        if (opt.isPresent()) {
+            Estudante estudante = opt.get();
             estudante.setNome(estudanteRequest.getNome());
             estudante.setEmail(estudanteRequest.getEmail());
             estudante.setNascimento(estudanteRequest.getNascimento());
             estudante.setAnoIngresso(estudanteRequest.getAnoIngresso());
-        });
+        }
+
         return opt;
     }
 
     @DeleteMapping("/mackenzie/estudantes/{id}")
     void deleteEstudante(@PathVariable long id) {
-        estudantes.removeIf(p -> p.getId() == id);
+        estudantes.removeIf(e -> e.getId() == id);
     }
 }

@@ -1,16 +1,13 @@
-GET - Lista todas as empresas
 GET http://localhost:8080/mackenzie/empresas
 Accept: application/json
 
 ###
 
-GET - Busca empresa por ID
 GET http://localhost:8080/mackenzie/empresas/1
 Accept: application/json
 
 ###
 
-POST - Cria nova empresa
 POST http://localhost:8080/mackenzie/empresas
 Content-Type: application/json
 
@@ -22,7 +19,6 @@ Content-Type: application/json
 
 ###
 
-PUT - Atualiza empresa existente
 PUT http://localhost:8080/mackenzie/empresas/2
 Content-Type: application/json
 
@@ -34,5 +30,4 @@ Content-Type: application/json
 
 ###
 
-DELETE - Remove empresa por ID
 DELETE http://localhost:8080/mackenzie/empresas/3
