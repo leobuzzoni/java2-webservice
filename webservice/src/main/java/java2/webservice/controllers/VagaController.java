@@ -2,9 +2,11 @@ package java2.webservice.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java2.webservice.models.Vaga;
+import java2.webservice.repository.VagaRepo;
 import java2.webservice.models.Empresa;
 
 @RestController
@@ -40,51 +42,16 @@ public class VagaController {
                 "Desenvolvimento de aplicações web frontend e backend com foco em automação.", "2025-10-04", true, e2));
     }
 
-    @GetMapping("/mackenzie/vagas")
-    Iterable<Vaga> getVagas() {
-        return this.vagas;
-    }
-
-    @GetMapping("/mackenzie/vagas/{id}")
-    Optional<Vaga> getVaga(@PathVariable long id) {
-        for (Vaga v : vagas) {
-            if (v.getId() == id) {
-                return Optional.of(v);
-            }
-        }
-        return Optional.empty();
-    }
+    @Autowired
+    private VagaRepo vagaRepo;
 
     @PostMapping("/mackenzie/vagas")
-    Vaga createVaga(@RequestBody Vaga v) {
-        long maxId = 1;
-        for (Vaga vag : vagas) {
-            if (vag.getId() > maxId) {
-                maxId = vag.getId();
-            }
-        }
-        v.setId(maxId + 1);
-        vagas.add(v);
-        return v;
+    private Vaga criar(@RequestBody Vaga v) {
+        return vagaRepo.save(v);
     }
 
-    @PutMapping("/mackenzie/vagas/{id}")
-    Optional<Vaga> updateVaga(@RequestBody Vaga vagaRequest, @PathVariable long id) {
-        Optional<Vaga> opt = this.getVaga(id);
-        if (opt.isPresent()) {
-            Vaga vaga = opt.get();
-            vaga.setTitulo(vagaRequest.getTitulo());
-            vaga.setDescricao(vagaRequest.getDescricao());
-            vaga.setPublicacao(vagaRequest.getPublicacao());
-            vaga.setAtivo(vagaRequest.getAtivo());
-            vaga.setEmpresa(vagaRequest.getEmpresa());
-        }
-
-        return opt;
-    }
-
-    @DeleteMapping("/mackenzie/vagas/{id}")
-    void deleteVaga(@PathVariable long id) {
-        vagas.removeIf(v -> v.getId() == id);
+    @GetMapping("/mackenzie/vagas")
+    private Iterable<Vaga> consultar() {
+        return vagaRepo.findAll();
     }
 }
