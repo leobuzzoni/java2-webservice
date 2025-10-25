@@ -3,10 +3,13 @@ package java2.webservice.controllers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java2.webservice.models.Empresa;
+import java2.webservice.repository.EmpresaRepo;
 
 @RestController
+@RequestMapping("/mackenzie/empresas")
 public class EmpresaController {
     private List<Empresa> empresas;
 
@@ -19,49 +22,46 @@ public class EmpresaController {
         empresas.add(new Empresa(5, "Epsilon Digital", "33.444.555/0001-66", "email@epsilondigital.com"));
     }
 
-    @GetMapping("/mackenzie/empresas")
-    Iterable<Empresa> getEmpresas() {
-        return this.empresas;
+    @Autowired
+    private EmpresaRepo empresaRepo;
+
+    @PostMapping
+    public Empresa criar(@RequestBody Empresa e) {
+        return empresaRepo.save(e);
     }
 
-    @GetMapping("/mackenzie/empresas/{id}")
-    Optional<Empresa> getEmpresa(@PathVariable long id) {
-        for (Empresa e : empresas) {
-            if (e.getId() == id) {
-                return Optional.of(e);
-            }
+    @GetMapping
+    public Iterable<Empresa> consultar() {
+        return empresaRepo.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Empresa> consultarPorId(@PathVariable long id) {
+        return empresaRepo.findById(id);
+    }
+
+    @PutMapping("/{id}")
+    public Empresa atualizar(@PathVariable long id, @RequestBody Empresa e) {
+        Optional<Empresa> existente = empresaRepo.findById(id);
+        if (existente.isPresent()) {
+            Empresa empresaAtual = existente.get();
+            empresaAtual.setNome(e.getNome());
+            empresaAtual.setCnpj(e.getCnpj());
+            empresaAtual.setEmail(e.getEmail());
+            return empresaRepo.save(empresaAtual);
+        } else {
+            e.setId(id);
+            return empresaRepo.save(e);
         }
-        return Optional.empty();
     }
 
-    @PostMapping("/mackenzie/empresas")
-    Empresa createEmpresa(@RequestBody Empresa e) {
-        long maxId = 1;
-        for (Empresa emp : empresas) {
-            if (emp.getId() > maxId) {
-                maxId = emp.getId();
-            }
+    @DeleteMapping("/{id}")
+    public String deletar(@PathVariable long id) {
+        if (empresaRepo.existsById(id)) {
+            empresaRepo.deleteById(id);
+            return "Empresa com ID " + id + " removida com sucesso.";
+        } else {
+            return "Empresa com ID " + id + " não encontrada.";
         }
-        e.setId(maxId + 1);
-        empresas.add(e);
-        return e;
-    }
-
-    @PutMapping("/mackenzie/empresas/{id}")
-    Optional<Empresa> updateEmpresa(@RequestBody Empresa empresaRequest, @PathVariable long id) {
-        Optional<Empresa> opt = this.getEmpresa(id);
-        if (opt.isPresent()) {
-            Empresa empresa = opt.get();
-            empresa.setNome(empresaRequest.getNome());
-            empresa.setCnpj(empresaRequest.getCnpj());
-            empresa.setEmail(empresaRequest.getEmail());
-        }
-
-        return opt;
-    }
-
-    @DeleteMapping("/mackenzie/empresas/{id}")
-    void deleteEmpresa(@PathVariable long id) {
-        empresas.removeIf(e -> e.getId() == id);
     }
 }
