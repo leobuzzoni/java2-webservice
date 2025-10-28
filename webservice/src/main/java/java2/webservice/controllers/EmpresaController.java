@@ -12,16 +12,16 @@ import java2.webservice.repository.EmpresaRepo;
 @RequestMapping("/mackenzie/empresas")
 public class EmpresaController {
 
-    @PostConstruct
-    public void inicializarEmpresas() {
-        if (empresaRepo.count() == 0) {
-            empresaRepo.save(new Empresa("Empresa Alfa LTDA", "12.345.678/0001-90", "contato@empresa-alfa.com"));
-            empresaRepo.save(new Empresa("Beta Comércio ME", "98.765.432/0001-10", "beta@comercio.com"));
-            empresaRepo.save(new Empresa("Gamma Serviços S.A.", "11.222.333/0001-44", "servicos@gamma.com"));
-            empresaRepo.save(new Empresa("Delta Engenharia", "22.333.444/0001-55", "contato@deltaeng.com"));
-            empresaRepo.save(new Empresa("Epsilon Digital", "33.444.555/0001-66", "email@epsilondigital.com"));
-        }
-    }
+    // @PostConstruct
+    // public void inicializarEmpresas() {
+    //     if (empresaRepo.count() == 0) {
+    //         empresaRepo.save(new Empresa("Empresa Alfa LTDA", "12.345.678/0001-90", "contato@empresa-alfa.com"));
+    //         empresaRepo.save(new Empresa("Beta Comércio ME", "98.765.432/0001-10", "beta@comercio.com"));
+    //         empresaRepo.save(new Empresa("Gamma Serviços S.A.", "11.222.333/0001-44", "servicos@gamma.com"));
+    //         empresaRepo.save(new Empresa("Delta Engenharia", "22.333.444/0001-55", "contato@deltaeng.com"));
+    //         empresaRepo.save(new Empresa("Epsilon Digital", "33.444.555/0001-66", "email@epsilondigital.com"));
+    //     }
+    // }
 
     @Autowired
     private EmpresaRepo empresaRepo;

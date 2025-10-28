@@ -13,40 +13,40 @@ import java2.webservice.repository.VagaRepo;
 @RequestMapping("/mackenzie/vagas")
 public class VagaController {
 
-        @PostConstruct
-        public void init() {
-                if (vagaRepo.count() == 0) {
-                        Empresa e1 = new Empresa(1, "Empresa Alfa LTDA", "12.345.678/0001-90",
-                                        "contato@empresa-alfa.com");
-                        Empresa e2 = new Empresa(2, "Beta Comércio ME", "98.765.432/0001-10", "beta@comercio.com");
-                        Empresa e3 = new Empresa(3, "Gamma Serviços S.A.", "11.222.333/0001-44", "servicos@gamma.com");
-                        Empresa e4 = new Empresa(4, "Delta Engenharia", "22.333.444/0001-55", "contato@deltaeng.com");
-                        Empresa e5 = new Empresa(5, "Epsilon Digital", "33.444.555/0001-66",
-                                        "email@epsilondigital.com");
+        // @PostConstruct
+        // public void init() {
+        //         if (vagaRepo.count() == 0) {
+        //                 Empresa e1 = new Empresa(1, "Empresa Alfa LTDA", "12.345.678/0001-90",
+        //                                 "contato@empresa-alfa.com");
+        //                 Empresa e2 = new Empresa(2, "Beta Comércio ME", "98.765.432/0001-10", "beta@comercio.com");
+        //                 Empresa e3 = new Empresa(3, "Gamma Serviços S.A.", "11.222.333/0001-44", "servicos@gamma.com");
+        //                 Empresa e4 = new Empresa(4, "Delta Engenharia", "22.333.444/0001-55", "contato@deltaeng.com");
+        //                 Empresa e5 = new Empresa(5, "Epsilon Digital", "33.444.555/0001-66",
+        //                                 "email@epsilondigital.com");
 
-                        vagaRepo.save(new Vaga("Desenvolvedor Java",
-                                        "Atuação em projetos backend com Java e Spring. Experiência desejada em APIs REST.",
-                                        "2025-10-01", true, e1));
-                        vagaRepo.save(new Vaga("Analista de Suporte Técnico",
-                                        "Suporte a clientes, resolução de chamados e participação em treinamentos internos.",
-                                        "2025-09-27", true, e2));
-                        vagaRepo.save(new Vaga("Engenheiro de Software",
-                                        "Desenvolvimento de soluções para sistemas corporativos, integração e automação.",
-                                        "2025-10-03", false, e3));
-                        vagaRepo.save(new Vaga("Analista de Dados",
-                                        "Manipulação e análise de grandes volumes de dados. Conhecimentos de SQL e Python.",
-                                        "2025-09-18", true, e4));
-                        vagaRepo.save(new Vaga("Designer Digital",
-                                        "Criação de materiais gráficos, UX/UI e participação em campanhas de marketing.",
-                                        "2025-09-30", false, e5));
-                        vagaRepo.save(new Vaga("Consultor de Projetos",
-                                        "Elaboração e acompanhamento de projetos empresariais e treinamentos.",
-                                        "2025-10-06", true, e1));
-                        vagaRepo.save(new Vaga("Programador Full Stack",
-                                        "Desenvolvimento de aplicações web frontend e backend com foco em automação.",
-                                        "2025-10-04", true, e2));
-                }
-        }
+        //                 vagaRepo.save(new Vaga("Desenvolvedor Java",
+        //                                 "Atuação em projetos backend com Java e Spring. Experiência desejada em APIs REST.",
+        //                                 "2025-10-01", true, e1));
+        //                 vagaRepo.save(new Vaga("Analista de Suporte Técnico",
+        //                                 "Suporte a clientes, resolução de chamados e participação em treinamentos internos.",
+        //                                 "2025-09-27", true, e2));
+        //                 vagaRepo.save(new Vaga("Engenheiro de Software",
+        //                                 "Desenvolvimento de soluções para sistemas corporativos, integração e automação.",
+        //                                 "2025-10-03", false, e3));
+        //                 vagaRepo.save(new Vaga("Analista de Dados",
+        //                                 "Manipulação e análise de grandes volumes de dados. Conhecimentos de SQL e Python.",
+        //                                 "2025-09-18", true, e4));
+        //                 vagaRepo.save(new Vaga("Designer Digital",
+        //                                 "Criação de materiais gráficos, UX/UI e participação em campanhas de marketing.",
+        //                                 "2025-09-30", false, e5));
+        //                 vagaRepo.save(new Vaga("Consultor de Projetos",
+        //                                 "Elaboração e acompanhamento de projetos empresariais e treinamentos.",
+        //                                 "2025-10-06", true, e1));
+        //                 vagaRepo.save(new Vaga("Programador Full Stack",
+        //                                 "Desenvolvimento de aplicações web frontend e backend com foco em automação.",
+        //                                 "2025-10-04", true, e2));
+        //         }
+        // }
 
         @Autowired
         private VagaRepo vagaRepo;

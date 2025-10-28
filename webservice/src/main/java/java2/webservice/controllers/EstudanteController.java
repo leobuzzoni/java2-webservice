@@ -12,33 +12,33 @@ import java2.webservice.repository.EstudanteRepo;
 @RequestMapping("/mackenzie/estudantes")
 public class EstudanteController {
 
-        @PostConstruct
-        public void inicializarEmpresas() {
-                if (estudanteRepo.count() == 0) {
-                        estudanteRepo.save(new Estudante("Ana Paula Souza", "ana.souza@email.com", "2002-03-15", 2020));
-                        estudanteRepo.save(
-                                        new Estudante("Carlos Henrique Lima", "carlos.lima@email.com", "2001-10-22",
-                                                        2019));
-                        estudanteRepo.save(
-                                        new Estudante("Fernanda Oliveira", "fernanda.oliveira@email.com", "2003-07-05",
-                                                        2021));
-                        estudanteRepo.save(
-                                        new Estudante("Lucas Pereira", "lucas.pereira@email.com", "2002-04-11", 2020));
-                        estudanteRepo.save(
-                                        new Estudante("Gabriela Martins", "gabriela.martins@email.com", "2001-12-25",
-                                                        2019));
-                        estudanteRepo.save(new Estudante("Rafael Costa", "rafael.costa@email.com", "2000-09-13", 2018));
-                        estudanteRepo.save(
-                                        new Estudante("Juliana Silva", "juliana.silva@email.com", "2002-06-18", 2020));
-                        estudanteRepo.save(
-                                        new Estudante("Marcos Vinícius", "marcos.vinicius@email.com", "2003-01-30",
-                                                        2021));
-                        estudanteRepo.save(new Estudante("Camila Azevedo", "camila.azevedo@email.com", "2001-11-08",
-                                        2019));
-                        estudanteRepo.save(new Estudante("Felipe Cardoso", "felipe.cardoso@email.com", "2000-08-27",
-                                        2018));
-                }
-        }
+        // @PostConstruct
+        // public void inicializarEstudantes() {
+        //         if (estudanteRepo.count() == 0) {
+        //                 estudanteRepo.save(new Estudante("Ana Paula Souza", "ana.souza@email.com", "2002-03-15", 2020));
+        //                 estudanteRepo.save(
+        //                                 new Estudante("Carlos Henrique Lima", "carlos.lima@email.com", "2001-10-22",
+        //                                                 2019));
+        //                 estudanteRepo.save(
+        //                                 new Estudante("Fernanda Oliveira", "fernanda.oliveira@email.com", "2003-07-05",
+        //                                                 2021));
+        //                 estudanteRepo.save(
+        //                                 new Estudante("Lucas Pereira", "lucas.pereira@email.com", "2002-04-11", 2020));
+        //                 estudanteRepo.save(
+        //                                 new Estudante("Gabriela Martins", "gabriela.martins@email.com", "2001-12-25",
+        //                                                 2019));
+        //                 estudanteRepo.save(new Estudante("Rafael Costa", "rafael.costa@email.com", "2000-09-13", 2018));
+        //                 estudanteRepo.save(
+        //                                 new Estudante("Juliana Silva", "juliana.silva@email.com", "2002-06-18", 2020));
+        //                 estudanteRepo.save(
+        //                                 new Estudante("Marcos Vinícius", "marcos.vinicius@email.com", "2003-01-30",
+        //                                                 2021));
+        //                 estudanteRepo.save(new Estudante("Camila Azevedo", "camila.azevedo@email.com", "2001-11-08",
+        //                                 2019));
+        //                 estudanteRepo.save(new Estudante("Felipe Cardoso", "felipe.cardoso@email.com", "2000-08-27",
+        //                                 2018));
+        //         }
+        // }
 
         @Autowired
         private EstudanteRepo estudanteRepo;
