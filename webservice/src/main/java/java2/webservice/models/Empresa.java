@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 public class Empresa {
-    
+
     @Id
     @GeneratedValue
     private long id;
@@ -17,6 +17,12 @@ public class Empresa {
 
     public Empresa(long id, String nome, String cnpj, String email) {
         this.id = id;
+        this.nome = nome;
+        this.cnpj = cnpj;
+        this.email = email;
+    }
+
+    public Empresa(String nome, String cnpj, String email) {
         this.nome = nome;
         this.cnpj = cnpj;
         this.email = email;

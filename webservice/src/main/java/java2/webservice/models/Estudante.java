@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 public class Estudante {
-    
+
     @Id
     @GeneratedValue
     private long id;
@@ -18,6 +18,13 @@ public class Estudante {
 
     public Estudante(long id, String nome, String email, String nascimento, int anoIngresso) {
         this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.nascimento = nascimento;
+        this.anoIngresso = anoIngresso;
+    }
+
+    public Estudante(String nome, String email, String nascimento, int anoIngresso) {
         this.nome = nome;
         this.email = email;
         this.nascimento = nascimento;

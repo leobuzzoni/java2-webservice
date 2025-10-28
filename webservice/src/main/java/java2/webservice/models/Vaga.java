@@ -29,6 +29,14 @@ public class Vaga {
         this.empresa = empresa;
     }
 
+    public Vaga(String titulo, String descricao, String publicacao, boolean ativo, Empresa empresa) {
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.publicacao = publicacao;
+        this.ativo = ativo;
+        this.empresa = empresa;
+    }
+
     public long getId() {
         return id;
     }

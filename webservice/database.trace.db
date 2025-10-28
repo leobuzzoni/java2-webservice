@@ -1,3 +1,0 @@
-2025-10-25 23:31:33.990994Z jdbc[13]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM EMPRESA ESTUDANTE [*]VAGA"; SQL statement:
-SELECT * FROM EMPRESA ESTUDANTE VAGA [42000-232]

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import jakarta.annotation.PostConstruct;
 import java2.webservice.models.Vaga;
 import java2.webservice.models.Empresa;
 import java2.webservice.repository.VagaRepo;
@@ -12,35 +14,77 @@ import java2.webservice.repository.VagaRepo;
 @RestController
 @RequestMapping("/mackenzie/vagas")
 public class VagaController {
-        private List<Vaga> vagas;
+        // private List<Vaga> vagas;
 
-        public VagaController() {
+        // public VagaController() {
+        // Empresa e1 = new Empresa(1, "Empresa Alfa LTDA", "12.345.678/0001-90",
+        // "contato@empresa-alfa.com");
+        // Empresa e2 = new Empresa(2, "Beta Comércio ME", "98.765.432/0001-10",
+        // "beta@comercio.com");
+        // Empresa e3 = new Empresa(3, "Gamma Serviços S.A.", "11.222.333/0001-44",
+        // "servicos@gamma.com");
+        // Empresa e4 = new Empresa(4, "Delta Engenharia", "22.333.444/0001-55",
+        // "contato@deltaeng.com");
+        // Empresa e5 = new Empresa(5, "Epsilon Digital", "33.444.555/0001-66",
+        // "email@epsilondigital.com");
+
+        // vagas = new ArrayList<>();
+        // vagas.add(new Vaga(1, "Desenvolvedor Java",
+        // "Atuação em projetos backend com Java e Spring. Experiência desejada em APIs
+        // REST.",
+        // "2025-10-01", true, e1));
+        // vagas.add(new Vaga(2, "Analista de Suporte Técnico",
+        // "Suporte a clientes, resolução de chamados e participação em treinamentos
+        // internos.",
+        // "2025-09-27", true, e2));
+        // vagas.add(new Vaga(3, "Engenheiro de Software",
+        // "Desenvolvimento de soluções para sistemas corporativos, integração e
+        // automação.",
+        // "2025-10-03", false, e3));
+        // vagas.add(new Vaga(4, "Analista de Dados",
+        // "Manipulação e análise de grandes volumes de dados. Conhecimentos de SQL e
+        // Python.",
+        // "2025-09-18", true, e4));
+        // vagas.add(new Vaga(5, "Designer Digital",
+        // "Criação de materiais gráficos, UX/UI e participação em campanhas de
+        // marketing.",
+        // "2025-09-30", false, e5));
+        // vagas.add(new Vaga(6, "Consultor de Projetos",
+        // "Elaboração e acompanhamento de projetos empresariais e treinamentos.",
+        // "2025-10-06", true, e1));
+        // vagas.add(new Vaga(7, "Programador Full Stack",
+        // "Desenvolvimento de aplicações web frontend e backend com foco em
+        // automação.",
+        // "2025-10-04", true, e2));
+        // }
+
+        @PostConstruct
+        public void init() {
                 Empresa e1 = new Empresa(1, "Empresa Alfa LTDA", "12.345.678/0001-90", "contato@empresa-alfa.com");
                 Empresa e2 = new Empresa(2, "Beta Comércio ME", "98.765.432/0001-10", "beta@comercio.com");
                 Empresa e3 = new Empresa(3, "Gamma Serviços S.A.", "11.222.333/0001-44", "servicos@gamma.com");
                 Empresa e4 = new Empresa(4, "Delta Engenharia", "22.333.444/0001-55", "contato@deltaeng.com");
                 Empresa e5 = new Empresa(5, "Epsilon Digital", "33.444.555/0001-66", "email@epsilondigital.com");
 
-                vagas = new ArrayList<>();
-                vagas.add(new Vaga(1, "Desenvolvedor Java",
+                vagaRepo.save(new Vaga("Desenvolvedor Java",
                                 "Atuação em projetos backend com Java e Spring. Experiência desejada em APIs REST.",
                                 "2025-10-01", true, e1));
-                vagas.add(new Vaga(2, "Analista de Suporte Técnico",
+                vagaRepo.save(new Vaga("Analista de Suporte Técnico",
                                 "Suporte a clientes, resolução de chamados e participação em treinamentos internos.",
                                 "2025-09-27", true, e2));
-                vagas.add(new Vaga(3, "Engenheiro de Software",
+                vagaRepo.save(new Vaga("Engenheiro de Software",
                                 "Desenvolvimento de soluções para sistemas corporativos, integração e automação.",
                                 "2025-10-03", false, e3));
-                vagas.add(new Vaga(4, "Analista de Dados",
+                vagaRepo.save(new Vaga("Analista de Dados",
                                 "Manipulação e análise de grandes volumes de dados. Conhecimentos de SQL e Python.",
                                 "2025-09-18", true, e4));
-                vagas.add(new Vaga(5, "Designer Digital",
+                vagaRepo.save(new Vaga("Designer Digital",
                                 "Criação de materiais gráficos, UX/UI e participação em campanhas de marketing.",
                                 "2025-09-30", false, e5));
-                vagas.add(new Vaga(6, "Consultor de Projetos",
+                vagaRepo.save(new Vaga("Consultor de Projetos",
                                 "Elaboração e acompanhamento de projetos empresariais e treinamentos.",
                                 "2025-10-06", true, e1));
-                vagas.add(new Vaga(7, "Programador Full Stack",
+                vagaRepo.save(new Vaga("Programador Full Stack",
                                 "Desenvolvimento de aplicações web frontend e backend com foco em automação.",
                                 "2025-10-04", true, e2));
         }
