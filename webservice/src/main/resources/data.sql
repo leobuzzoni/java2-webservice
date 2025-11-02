@@ -28,3 +28,9 @@ INSERT INTO VAGA (id, titulo, descricao, publicacao, ativo, empresa_id) VALUES (
 INSERT INTO VAGA (id, titulo, descricao, publicacao, ativo, empresa_id) VALUES (5, 'Designer Digital', 'Criação de materiais gráficos, UX/UI e participação em campanhas de marketing.', '2025-09-30', false, 5);
 INSERT INTO VAGA (id, titulo, descricao, publicacao, ativo, empresa_id) VALUES (6, 'Consultor de Projetos', 'Elaboração e acompanhamento de projetos empresariais e treinamentos.', '2025-10-06', true, 1);
 INSERT INTO VAGA (id, titulo, descricao, publicacao, ativo, empresa_id) VALUES (7, 'Programador Full Stack', 'Desenvolvimento de aplicações web frontend e backend com foco em automação.', '2025-10-04', true, 2);
+
+INSERT INTO AREA (id, nome) VALUES (1, 'Desenvolvimento de Software');
+INSERT INTO AREA (id, nome) VALUES (2, 'Banco de Dados');
+INSERT INTO AREA (id, nome) VALUES (3, 'Design Digital');
+INSERT INTO AREA (id, nome) VALUES (4, 'Engenharia');
+INSERT INTO AREA (id, nome) VALUES (5, 'Análise de Dados');

@@ -5,6 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import java2.webservice.models.Vaga;
 
 public interface VagaRepo
-        extends CrudRepository<Vaga, Long> {
+                extends CrudRepository<Vaga, Long> {
 
 }

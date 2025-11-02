@@ -1,0 +1,24 @@
+### Listar todas as áreas
+GET http://localhost:8080/mackenzie/areas
+
+### Buscar área por ID
+GET http://localhost:8080/mackenzie/areas/1
+
+### Criar nova área
+POST http://localhost:8080/mackenzie/areas
+Content-Type: application/json
+
+{
+  "nome": "Segurança da Informação"
+}
+
+### Atualizar área existente
+PUT http://localhost:8080/mackenzie/areas/1
+Content-Type: application/json
+
+{
+  "nome": "Desenvolvimento Web e Mobile"
+}
+
+### Deletar área
+DELETE http://localhost:8080/mackenzie/areas/5
