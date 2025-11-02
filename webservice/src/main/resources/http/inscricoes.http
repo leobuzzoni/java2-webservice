@@ -1,0 +1,50 @@
+### Listar todas as inscrições
+GET http://localhost:8080/mackenzie/inscricoes
+Accept: application/json
+
+###
+
+### Buscar por ID
+GET http://localhost:8080/mackenzie/inscricoes/1
+Accept: application/json
+
+###
+
+### Criar nova inscrição
+POST http://localhost:8080/mackenzie/inscricoes
+Content-Type: application/json
+
+{
+  "dataInscricao": "2025-10-25",
+  "status": "Em análise",
+  "mensagemApresentacao": "Tenho experiência com Java e estou interessado na vaga.",
+  "estudante": {
+    "id": 3
+  },
+  "vaga": {
+    "id": 2
+  }
+}
+
+###
+
+### Atualizar uma inscrição existente
+PUT http://localhost:8080/mackenzie/inscricoes/1
+Content-Type: application/json
+
+{
+  "dataInscricao": "2025-10-26",
+  "status": "Aprovado",
+  "mensagemApresentacao": "Feliz por participar do processo!",
+  "estudante": {
+    "id": 3
+  },
+  "vaga": {
+    "id": 2
+  }
+}
+
+###
+
+### Deletar inscrição
+DELETE http://localhost:8080/mackenzie/inscricoes/1
