@@ -34,3 +34,18 @@ INSERT INTO AREA (id, nome) VALUES (2, 'Banco de Dados');
 INSERT INTO AREA (id, nome) VALUES (3, 'Design Digital');
 INSERT INTO AREA (id, nome) VALUES (4, 'Engenharia');
 INSERT INTO AREA (id, nome) VALUES (5, 'Análise de Dados');
+
+INSERT INTO INSCRICAO (id, data_inscricao, status, mensagem_apresentacao, estudante_id, vaga_id)
+VALUES (1, '2025-10-10', 'Em análise', 'Tenho grande interesse na vaga de Desenvolvedor Java.', 1, 1);
+
+INSERT INTO INSCRICAO (id, data_inscricao, status, mensagem_apresentacao, estudante_id, vaga_id)
+VALUES (2, '2025-10-12', 'Aprovado', 'Agradeço pela oportunidade!', 2, 2);
+
+INSERT INTO INSCRICAO (id, data_inscricao, status, mensagem_apresentacao, estudante_id, vaga_id)
+VALUES (3, '2025-10-15', 'Reprovado', 'Espero participar de outras seleções futuramente.', 3, 3);
+
+INSERT INTO INSCRICAO (id, data_inscricao, status, mensagem_apresentacao, estudante_id, vaga_id)
+VALUES (4, '2025-10-18', 'Em análise', 'Tenho experiência prévia em Python e SQL.', 4, 4);
+
+INSERT INTO INSCRICAO (id, data_inscricao, status, mensagem_apresentacao, estudante_id, vaga_id)
+VALUES (5, '2025-10-20', 'Aprovado', 'Sou apaixonada por design digital e inovação.', 5, 5);
