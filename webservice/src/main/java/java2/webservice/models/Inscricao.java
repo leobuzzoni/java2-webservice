@@ -9,7 +9,7 @@ public class Inscricao {
     @GeneratedValue
     private long id;
 
-    private String dataInscricao; 
+    private String dataInscricao;
     private String status;
     private String mensagemApresentacao;
 
@@ -22,7 +22,8 @@ public class Inscricao {
     public Inscricao() {
     }
 
-    public Inscricao(long id, String dataInscricao, String status, String mensagemApresentacao, Estudante estudante, Vaga vaga) {
+    public Inscricao(long id, String dataInscricao, String status, String mensagemApresentacao, Estudante estudante,
+            Vaga vaga) {
         this.id = id;
         this.dataInscricao = dataInscricao;
         this.status = status;

@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>Vagas</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css"> 
+    </head>
+    <body>
+        <h1>Gerenciamento de Vagas</h1>
+
+        <label for="titulo">Titulo: </label>
+        <input type="text" id="titulo">
+        <br>
+        <label for="descricao">Descricao: </label>
+        <input type="text" id="descricao">
+        <br>
+        <label for="publicacao">Publicacao: </label>
+        <input type="text" id="publicacao">
+        <br>
+        <label for="ativo">Ativo: </label>
+        <input type="text" id="ativo">
+        <br>
+        <label for="id_empresa">Id Empresa: </label>
+        <input type="text" id="id_empresa">
+        <br>
+        <button onclick="adicionarVaga()">Salvar</button>
+
+        <table id="tabelaVagas">
+            <tr>
+                <th>id</th> <th>titulo</th> <th>descricao</th> <th>publicacao</th> <th>ativo</th> <th>id empresa</th>
+            </tr> 
+            <tbody id="corpoTabelaVagas">
+            </tbody>   
+        </table>
+
+        <script>
+            const corpoTabelaVagas = document.querySelector("#corpoTabelaVagas");
+            const titulo = document.querySelector("#titulo");
+            const descricao = document.querySelector("#descricao");
+            const publicacao = document.querySelector("#publicacao");
+            const ativo = document.querySelector("#ativo");
+            const idEmpresa = document.querySelector("#id_empresa");
+
+            listarTodasVagas();
+
+            function listarTodasVagas() {
+                const url = "/mackenzie/vagas";
+                fetch(url)
+                    .then(resposta => resposta.json())
+                    .then(json => preencherTabelaVagas(json));
+            }
+
+            function preencherTabelaVagas(vagas) {
+                corpoTabelaVagas.innerHTML = "";
+
+                vagas.forEach(vaga => {
+                    let linha = corpoTabelaVagas.insertRow();
+                    let celulaId = linha.insertCell();
+                    let celulaTitulo = linha.insertCell();
+                    let celulaDescricao = linha.insertCell();
+                    let celulaPublicacao = linha.insertCell();
+                    let celulaAtivo = linha.insertCell();
+                    let celulaIdEmpresa = linha.insertCell();
+
+                    celulaId.textContent = vaga.id;
+                    celulaTitulo.textContent = vaga.titulo;
+                    celulaDescricao.textContent = vaga.descricao;
+                    celulaPublicacao.textContent = vaga.publicacao;
+                    celulaAtivo.textContent = vaga.ativo ? "Ativo" : "Inativo";
+                    celulaIdEmpresa.textContent = vaga.empresa.id;
+                });
+            }
+
+            function adicionarVaga() {
+                const url = "/mackenzie/vagas";         
+                fetch(url, { 
+                    method: "POST",
+                    body: JSON.stringify({
+                        titulo: titulo.value,
+                        descricao: descricao.value,
+                        publicacao: publicacao.value,
+                        ativo: ativo.value.toLowerCase() === "true",
+                        empresa: { id: idEmpresa.value }
+                    }),
+                    headers: {
+                        "Content-type": "application/json",
+                    }
+                })
+                .then(resposta => resposta.json())
+                .then(json => {
+                    listarTodasVagas();
+                    limparCampos();
+                });
+            }
+
+            function limparCampos() {
+                titulo.value = "";
+                descricao.value = "";
+                publicacao.value = "";
+                ativo.value = "true";
+                idEmpresa.value = "";
+            }
+        </script> 
+    </body>
+</html>

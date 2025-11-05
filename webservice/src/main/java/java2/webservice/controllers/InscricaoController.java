@@ -34,7 +34,7 @@ public class InscricaoController {
         Optional<Inscricao> existente = inscricaoRepo.findById(id);
         if (existente.isPresent()) {
             Inscricao inscricaoAtual = existente.get();
-            inscricaoAtual.setDataInscricao(i.getDataInscricao()); 
+            inscricaoAtual.setDataInscricao(i.getDataInscricao());
             inscricaoAtual.setStatus(i.getStatus());
             inscricaoAtual.setMensagemApresentacao(i.getMensagemApresentacao());
             inscricaoAtual.setEstudante(i.getEstudante());
