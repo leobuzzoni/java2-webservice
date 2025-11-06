@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Vaga {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String titulo;

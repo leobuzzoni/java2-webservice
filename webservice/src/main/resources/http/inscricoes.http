@@ -1,16 +1,13 @@
-### Listar todas as inscrições
 GET http://localhost:8080/mackenzie/inscricoes
 Accept: application/json
 
 ###
 
-### Buscar por ID
 GET http://localhost:8080/mackenzie/inscricoes/1
 Accept: application/json
 
 ###
 
-### Criar nova inscrição
 POST http://localhost:8080/mackenzie/inscricoes
 Content-Type: application/json
 
@@ -28,7 +25,6 @@ Content-Type: application/json
 
 ###
 
-### Atualizar uma inscrição existente
 PUT http://localhost:8080/mackenzie/inscricoes/1
 Content-Type: application/json
 
@@ -46,5 +42,4 @@ Content-Type: application/json
 
 ###
 
-### Deletar inscrição
 DELETE http://localhost:8080/mackenzie/inscricoes/1

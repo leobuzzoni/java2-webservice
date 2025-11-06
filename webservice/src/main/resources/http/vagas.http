@@ -1,10 +1,13 @@
-### Listar
 GET http://localhost:8080/mackenzie/vagas
+Accept: application/json
 
-### Buscar por ID
+###
+
 GET http://localhost:8080/mackenzie/vagas/1
+Accept: application/json
 
-### Criar
+###
+
 POST http://localhost:8080/mackenzie/vagas
 Content-Type: application/json
 
@@ -19,7 +22,8 @@ Content-Type: application/json
   }
 }
 
-### Atualizar
+###
+
 PUT http://localhost:8080/mackenzie/vagas/1
 Content-Type: application/json
 
@@ -29,5 +33,6 @@ Content-Type: application/json
   "ativo": false
 }
 
-### Deletar
+###
+
 DELETE http://localhost:8080/mackenzie/vagas/1
